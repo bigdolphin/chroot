@@ -17,9 +17,9 @@ cp /usr/bin/qemu-arm-static rootfs/usr/bin/
 sed -i 's%^# deb %deb %' rootfs/etc/apt/sources.list
 
 #--5. chroot
-
-chmod a+x ch-mount.sh
-./ch-mount.sh -m rootfs/
+wget https://github.com/bigdolphin/chroot/raw/main/ch2root.sh
+chmod a+x ch2root.sh
+./ch2root.sh -m rootfs/
 
 #--6. Update the repositories
 chmod 1777 /tmp

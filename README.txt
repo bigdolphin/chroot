@@ -30,3 +30,13 @@ apt install -y language-pack-en-base sudo bash-completion dialog vim nano lsof u
 apt install -y bison flex bc build-essential cmake automake autoconf cmake-curses-gui pkg-config yasm tmux git
 apt install -y net-tools ethtool iputils-ping alsa-utils unzip net-tools netbase ifupdown network-manager ntp usbutils ssh whois
 apt install -y apt-utils subversion graphviz espeak i2c-tools evtest sox onboard device-tree-compiler alsamixergui
+
+#--8. Exit chroot and unmount proc, sys, dev, dev/pts
+exit
+./ch2root.sh -u rootfs/
+
+#--9. Copy rootfs to sd
+rsync -aP rootfs/ img_mount/
+sync
+ls -l img_mount/
+umount img_mount/
